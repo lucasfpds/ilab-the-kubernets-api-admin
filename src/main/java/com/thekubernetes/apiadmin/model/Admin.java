@@ -22,7 +22,7 @@ public class Admin {
 
 	@Column(nullable = false)
 	private String password;
-
+   
     public Integer getId() {
         return id;
     }
