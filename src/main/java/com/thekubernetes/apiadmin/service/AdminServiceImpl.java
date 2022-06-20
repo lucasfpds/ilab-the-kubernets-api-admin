@@ -138,7 +138,7 @@ public class AdminServiceImpl implements IAdminService {
 
             if (passwordIsValid) {
                 Token token= new Token (TokenUtil.createToken(admin));
-                return ResponseEntity.status(200).body("{\"token\":\"" +token.getToken()+"\"}");
+                return ResponseEntity.status(200).body("{\"token\":\"" +token.getToken()+"\",\n\"id\":\"" + admin.getId() +"\"}");
             }else{
                 return ResponseEntity.status(404).body("{\"message\":\"Email ou senha inválidos.\"}");
             }
