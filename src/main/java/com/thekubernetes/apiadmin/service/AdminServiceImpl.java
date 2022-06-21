@@ -33,6 +33,9 @@ public class AdminServiceImpl implements IAdminService {
         if (novo.getEmail() == null) {
             return ResponseEntity.status(400).body("{\"message\":\"Campo 'Email' precisa ser informado.\"}");
         }
+        if (novo.getPassword() == null) {
+            return ResponseEntity.status(400).body("{\"message\":\"Campo 'password' precisa ser informado.\"}");
+        }
         try {
             novo.setPassword(ApiCrypto.encryptToSave(novo.getPassword()));
             dao.save(novo);
@@ -135,7 +138,7 @@ public class AdminServiceImpl implements IAdminService {
 
             if (passwordIsValid) {
                 Token token= new Token (TokenUtil.createToken(admin));
-                return ResponseEntity.status(200).body("{\"token\":\"" +token.getToken()+"\"}");
+                return ResponseEntity.status(200).body("{\"token\":\"" +token.getToken()+"\",\n\"id\":\"" + admin.getId() +"\"}");
             }else{
                 return ResponseEntity.status(404).body("{\"message\":\"Email ou senha inválidos.\"}");
             }

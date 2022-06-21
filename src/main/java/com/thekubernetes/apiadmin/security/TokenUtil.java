@@ -24,9 +24,9 @@ public class TokenUtil {
     // private static final int DIAS = 24 * HORAS;
 
     private static final String HEADER = "Authorization";
-    private static final String PREFIX = "BEARER ";
+    private static final String PREFIX = "Bearer ";
     private static final long EXPIRATION = 2 * HORAS;
-    private static final String SECRET_KEY = System.getenv("SECRET_KEY_TOKEN");
+    private static final String SECRET_KEY =System.getenv("SECRET_KEY_TOKEN");
     private static final String EMISSOR = "theKubernetesAPI";
 
     public static String createToken(Admin admin) {
@@ -39,7 +39,7 @@ public class TokenUtil {
                 .signWith(secretKey, SignatureAlgorithm.HS256)
                 .compact();
 
-        return PREFIX + token;
+        return token;
     }
 
     private static boolean isExpirationValid(Date expiration) {

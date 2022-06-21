@@ -16,8 +16,6 @@ public class AdminDTO {
         super();
     }
 
-
-
     public Integer getId() {
         return id;
     }
