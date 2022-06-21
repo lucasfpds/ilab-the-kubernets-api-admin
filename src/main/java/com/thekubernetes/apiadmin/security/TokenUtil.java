@@ -26,7 +26,7 @@ public class TokenUtil {
     private static final String HEADER = "Authorization";
     private static final String PREFIX = "BEARER ";
     private static final long EXPIRATION = 2 * HORAS;
-    private static final String SECRET_KEY = System.getenv("SECRET_KEY_TOKEN");
+    private static final String SECRET_KEY =System.getenv("SECRET_KEY_TOKEN");
     private static final String EMISSOR = "theKubernetesAPI";
 
     public static String createToken(Admin admin) {
