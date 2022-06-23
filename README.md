@@ -85,8 +85,7 @@ O que foi implementado durante o projeto:
 
 * Retorno: <br/>
 {<br/> "Aplicação administradores"  <br/>
-} <br/> <br/>
-ou {"mensagem": "Bad Request"} <br/>
+} <br/> 
 </br>
 
 ### Get Admins
@@ -97,7 +96,7 @@ ou {"mensagem": "Bad Request"} <br/>
   <br/> - Lista de Admintradores cadastrados no banco de dados - <br/>
 }
 status 200 (ok) <br/> <br/>
-ou {"mensagem": "Bad Request"} <br/>
+ou {"mensagem": "Não existe Admin cadastrado."} <br/>
 
 ### Get Admin By Id
 `GET` (/admin/{id}) <br/>
@@ -107,51 +106,127 @@ ou {"mensagem": "Bad Request"} <br/>
 
 * Retorno: <br/>
 {
-  <br/> - Lista de Admintradores cadastrados no banco de dados - <br/>
+  <br/>id: idAdmin,<br/>
+       email: emailAdmin,<br/>
+       name: nameAdmin<br/>
 }
 status 200 (ok) <br/> <br/>
-ou {"mensagem": "Bad Request"} <br/>
+ou {"mensagem": "Não foi possível encontrar admin com o Id informado"} <br/>
+
+### Create Admin
+`POST` (/create) <br/>
+{
+  <br/>name: nameAdmin,<br/>
+       email: emailAdmin,<br/>
+       password: passwordAdmin<br/>
+  }
+
+* Retorno: <br/>
+{
+  <br/>id: idAdmin,<br/>
+       name: nameAdmin,<br/>
+       email: emailAdmin,<br/>
+       password: passwordAdmin<br/>
+}
+status 201 (Create) <br/> <br/>
+ou {"mensagem": "Não foi possível Cadastrar admin."} <br/>
+
+### Update Admin
+`PUT` (/update/{id}) <br/>
+<br/>  - Id Adminstrador passado por parâmentro  - </br>
+{
+  <br/>name: nameAdmin,<br/>
+       email: emailAdmin,<br/>
+       password: passwordAdmin<br/>
+  }
+
+* Retorno: <br/>
+{
+  <br/>id: idAdmin,<br/>
+       name: nameAdmin,<br/>
+       email: emailAdmin,<br/>
+       password: passwordAdmin<br/>
+}
+status 200 (ok) <br/> <br/>
+ou {"mensagem": "Não foi possível atualizar admin."} <br/>
+
+### Delete Admin
+`DELETE` (/delete/{id}) <br/>
+<br/>  - Id Adminstrador passado por parâmentro  - </br>
+* Retorno: <br/>
+status 204 (no content) <br/> <br/>
+ou {"mensagem": "Não foi possível deletar admin."} <br/>
+
+### Login
+`POST` (/login) <br/>
+<br/> {
+  <br/>email: emailAdmin,<br/>
+       password: passwordAdmin<br/>
+  } </br>
+* Retorno: <br/>
+  {
+  <br/> - Token Válido para Acesso ao Sistema - <br/>
+  }
+status 200 (ok) <br/> <br/>
+ou {"mensagem": "Email ou senha inválidos."} <br/>
 
 <br/>
 <hr/>
 
 
-## Name
-Choose a self-explaining name for your project.
+## Executar a aplicação
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+```bash
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+# Clone este repositório em sua máquina  
+$ git clone https://gitlab.com/ilab-the-kubernets/admin-api.git
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+```
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+<br/>
+<hr/>
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+## 🛠 Tecnologias
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+As seguintes linguagens/tecnologias foram usadas na construção do projeto:
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+<div>
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" target="_blank">
+  <br/>
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" target="_blank">
+  <br/>
+  <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white" target="_blank">
+</div>
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+<br/>
+<hr/>
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+## 🛠 Ferramentas
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+As seguintes ferrramentas foram utilizadas no projeto (clique nos ícones para acessar a documentação):
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+<div>
+    <a href=https://donovan-tarsis.atlassian.net/jira/software/projects/KG4/boards/2>
+        <img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=Jira&logoColor=white" target="_blank">
+    </a>
+    <a href=https://www.notion.so/d797dd90bf404eb889490c76731514e7?v=fd976418c0704b7c9205a5dc80db1826>
+        <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white" target="_blank">
+    </a>
+</div>
 
-## License
-For open source projects, say how it is licensed.
+<br/>
+<hr/>
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+## 👩‍💻🧑‍💻 Equipe responsável
+
+**Antônia Pamela Yhaohannah de Lima** - [GitLab](https://gitlab.com/yhaohannah.lima) [Linkedin](https://www.linkedin.com/in/yhaohannah-lima-954690216/)
+
+**Donovan Társis Bicalho Silva** - [GitLab](https://gitlab.com/donovan.tarsis) [Linkedin](https://www.linkedin.com/in/donovan-tarsis/)
+
+**Guilherme Felipe Campos** - [GitLab](https://gitlab.com/GuilhermeFelipeCampos) [Linkedin](https://www.linkedin.com/in/guilhermefelipecampos/)
+
+**Lucas Fernandes Paixão dos Santos** - [GitLab](https://gitlab.com/lucasfpds) [Linkedin](https://www.linkedin.com/in/lfpds/)
+
+**Rebeca Victoria dos Santos Ferreira** - [GitLab](https://gitlab.com/rvsfrebeca1) [Linkedin](https://www.linkedin.com/in/rebecaferreirajs/)
+
+---
