@@ -103,9 +103,14 @@ public class AdminServiceImpl implements IAdminService {
         if(admin.getId() == null){
             throw new ApiRequestException("{\"message\":\"Campo 'Id' é obrigatório.\"}");
         }
+        if (admin.getPassword() == null) {
+            return ResponseEntity.status(400).body("{\"message\":\"Campo 'password' precisa ser informado.\"}");
+        }
         try {
+            admin.setPassword(ApiCrypto.encryptToSave(admin.getPassword()));
             dao.save(admin);
-            return ResponseEntity.status(200).body(admin);
+            AdminDTO create = new AdminDTO(admin.getId(), admin.getName(), admin.getEmail());
+            return ResponseEntity.status(201).body(create);
         } catch (Exception e) {
             e.printStackTrace();
             throw new ApiRequestException("Não foi possível atualizar admin");
@@ -140,10 +145,10 @@ public class AdminServiceImpl implements IAdminService {
                 Token token= new Token (TokenUtil.createToken(admin));
                 return ResponseEntity.status(200).body("{\"token\":\"" +token.getToken()+"\",\n\"id\":\"" + admin.getId() +"\"}");
             }else{
-                return ResponseEntity.status(404).body("{\"message\":\"Email ou senha inválidos.\"}");
+                return ResponseEntity.status(400).body("{\"message\":\"Email ou senha inválidos.\"}");
             }
         }
-        return null;
+        return ResponseEntity.status(400).body("{\"message\":\"Email ou senha inválidos.\"}");
     }
 
 }
