@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-admin-api
+  namespace: grupo-4-namespace
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: deployment-admin-api
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: deployment-admin-api
+    spec:
+      containers:
+        - name: rvsfrebeca-admin-api
+          image: rvsfrebeca/imagem-admins-api
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_ADMINS_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: db-key-secret-credentials
+                  key: DB_ADMINS_USERNAME
+            - name: DB_ADMINS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-key-secret-credentials
+                  key: DB_ADMINS_PASSWORD
+            - name: DB_ADMINS_URL
+              valueFrom:
+                secretKeyRef:
+                    name: db-key-secret-credentials
+                    key: DB_ADMINS_URL
+            - name: SECRET_KEY_TOKEN
+              valueFrom:
+                secretKeyRef:
+                    name: db-key-secret-credentials
+                    key: SECRET_KEY_TOKEN
+            - name: CORS_URL
+              valueFrom:
+                secretKeyRef:
+                    name: db-key-secret-credentials
+                    key: CORS_URL
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: clusterip-admin
+  namespace: grupo-4-namespace
+spec:
+  type: ClusterIP
+  selector:
+    app: deployment-admin-api
+  ports:
+    - port: 8080
+      targetPort: 8080
