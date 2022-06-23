@@ -9,8 +9,13 @@
    * [Sobre o projeto](#-sobre-o-projeto)
    * [Informações Gerais](#-informações-gerais)
    * [Endpoints da API](#-endpoints-da-api)
-      * [Create Order](#-create-order)
-      * [List Orders](#-list-orders)
+      * [Home Admin](#-home)
+      * [Get Admins](#-admin)
+      * [Get Admin By Id](#-admin/{id})
+      * [Create Admin](#-create)
+      * [Update Admin](#-update/{id})
+      * [Delete Admin](#-delete/{id})
+      * [Login Admin](#-login)
    * [Pré-requisitos](#-pré-requisitos)
    * [Executar a aplicação](#-executar-a-aplicação)
    * [Tecnologias](#-tecnologias)
@@ -73,6 +78,43 @@ O que foi implementado durante o projeto:
 <hr/>
 
 ## ☞ Endpoints da API
+
+### Home Admin
+* `GET` (/home) <br/>
+<br/>
+
+* Retorno: <br/>
+{<br/> "Aplicação administradores"  <br/>
+} <br/> <br/>
+ou {"mensagem": "Bad Request"} <br/>
+</br>
+
+### Get Admins
+`GET` (/admin) <br/>
+
+* Retorno: <br/>
+{
+  <br/> - Lista de Admintradores cadastrados no banco de dados - <br/>
+}
+status 200 (ok) <br/> <br/>
+ou {"mensagem": "Bad Request"} <br/>
+
+### Get Admin By Id
+`GET` (/admin/{id}) <br/>
+{
+  <br/>  - Id Adminstrador passado por parâmentro  - </br>
+  }
+
+* Retorno: <br/>
+{
+  <br/> - Lista de Admintradores cadastrados no banco de dados - <br/>
+}
+status 200 (ok) <br/> <br/>
+ou {"mensagem": "Bad Request"} <br/>
+
+<br/>
+<hr/>
+
 
 ## Name
 Choose a self-explaining name for your project.
