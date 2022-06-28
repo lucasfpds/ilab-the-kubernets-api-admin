@@ -41,9 +41,24 @@ docker:
   - test
   
   script:
-    - docker build -t "$CI_REGISTRY_USER/api-admin-pipe:latest" .
-    - docker push "$CI_REGISTRY_USER/api-admin-pipe:latest"
+    - docker build -t "$CI_REGISTRY_USER/imagem-admins-api" .
+    - docker push "$CI_REGISTRY_USER/imagem-admins-api"
     
+  only:
+    - main
+    - develop
+
+deploy:
+  image: matshareyourscript/aws-helm-kubectl
+  stage: deploy
+  before_script:
+    - aws eks --region us-east-1 update-kubeconfig  --name ilab
+    - export KUBECONFIG=/root/.kube/config
+  script:
+    - kubectl delete -f nginx.yml -n grupo-4-namespace
+    - kubectl apply -f nginx.yml -n grupo-4-namespace
+    - kubectl delete -f deployment-admin-api.yml -n grupo-4-namespace  
+    - kubectl apply -f deployment-admin-api.yml -n grupo-4-namespace  
   only:
     - main
     - develop

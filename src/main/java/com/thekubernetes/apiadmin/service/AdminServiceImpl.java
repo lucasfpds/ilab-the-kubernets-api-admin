@@ -37,6 +37,10 @@ public class AdminServiceImpl implements IAdminService {
             return ResponseEntity.status(400).body("{\"message\":\"Campo 'password' precisa ser informado.\"}");
         }
         try {
+            Admin admin = dao.findByEmailEquals(novo.getEmail());
+            if (admin != null) {
+                return ResponseEntity.status(400).body("{\"message\":\"Email já cadastrado.\"}");
+            }
             novo.setPassword(ApiCrypto.encryptToSave(novo.getPassword()));
             dao.save(novo);
             AdminDTO create = new AdminDTO(novo.getId(), novo.getName(), novo.getEmail());

@@ -1,4 +1,5 @@
 /Users/paixao.lucas/Desktop/iLab/Workspace_web/desafio_final/ilab-the-kubernets-api-admin/src/main/java/com/thekubernetes/apiadmin/security/ApiEntryPoint.java
+/Users/paixao.lucas/Desktop/iLab/Workspace_web/desafio_final/ilab-the-kubernets-api-admin/src/main/java/com/thekubernetes/apiadmin/CorsConfiguration.java
 /Users/paixao.lucas/Desktop/iLab/Workspace_web/desafio_final/ilab-the-kubernets-api-admin/src/main/java/com/thekubernetes/apiadmin/service/AdminServiceImpl.java
 /Users/paixao.lucas/Desktop/iLab/Workspace_web/desafio_final/ilab-the-kubernets-api-admin/src/main/java/com/thekubernetes/apiadmin/security/ApiCrypto.java
 /Users/paixao.lucas/Desktop/iLab/Workspace_web/desafio_final/ilab-the-kubernets-api-admin/src/main/java/com/thekubernetes/apiadmin/exception/ApiException.java
